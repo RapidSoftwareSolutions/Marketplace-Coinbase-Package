@@ -37,6 +37,18 @@ if(isset($argv[2])){
 //--------------//
 $json = include_once $argv[1];
 unset($json['custom']);
+foreach($json['blocks'] as &$oneBlock){
+    $oneBlock['callbacks'] = [
+        [
+            "name" => "error",
+            "info" => "Error",
+        ],
+        [
+            "name" => "success",
+            "info" => "Success",
+        ],
+    ];
+}
 $json = json_encode($json, JSON_PRETTY_PRINT);
 if(json_last_error() != 0) {
     exit(

@@ -13,6 +13,8 @@ class Router
     private $blocks;
     private $custom;
     private $klein;
+    private $apiVersion;
+    private $supportedMethods;
 
     public function __construct(
         $packageName,
@@ -25,6 +27,8 @@ class Router
         $this->custom = $custom;
         $this->klein = new \Klein\Klein();
         $this->http = new \GuzzleHttp\Client(['verify' => false]);
+        $this->apiVersion = '2017-03-06';
+        $this->supportedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
     }
 
     public function setup()
@@ -63,13 +67,13 @@ class Router
         // Get method for vendor route
         if(
             isset($this->custom[$block['name']]['method'])&&
-            in_array($this->custom[$block['name']]['method'], ['GET'])
+            in_array($this->custom[$block['name']]['method'], $this->supportedMethods)
         ){
             $method = $this->custom[$block['name']]['method'];
         }else{
             $result['callback'] = 'error';
             $result['contextWrites']['to']['status_code'] = 'INTERNAL_PACKAGE_ERROR';
-            $result['contextWrites']['to']['status_msg'] = 'Wrong metadata format custom block Method is miss in ' . $block['name'] . '.';
+            $result['contextWrites']['to']['status_msg'] = 'Declared unsupported method for block: ' . $block['name'] . '.';
             echo json_encode($result);
             exit(200);
         }
@@ -126,10 +130,19 @@ class Router
             // Prepare param
             $sendParam = $this->prepareParam($inputPram, $blockCustom['dictionary'], $blockName);
             $sendBody = $sendParam;
+
             // If need, custom make custom default processing
             if(isset($blockCustom['default'])&&is_array($blockCustom['default'])&&count($blockCustom['default'])>0){
                 $sendBody = array_merge($blockCustom['default'], $sendBody);
             }
+
+            // Remove $accessToken from params
+            if(isset($sendBody['access_token'])&&strlen($sendBody['access_token'])>0){
+                $accessToken = $sendBody['access_token'];
+            }else{
+                $accessToken = false;
+            }
+
             // If need, custom make custom processing for route
             if(isset($blockCustom['custom'])&&$blockCustom['custom'] == true){
                 $sendBody = CustomModel::$blockName($sendParam, $this->custom[$blockName], $vendorUrl);
@@ -142,7 +155,7 @@ class Router
             }
 
             // Make request
-            $result = $this->httpRequest($vendorUrl, $method, $sendBody);
+            $result = $this->httpRequest($vendorUrl, $method, $sendBody, $accessToken);
             echo json_encode($result);
             exit(200);
         });
@@ -269,7 +282,7 @@ class Router
         return $result;
     }
 
-    protected function httpRequest($url, $method, $sendBody)
+    protected function httpRequest($url, $method, $sendBody, $accessToken)
     {
         if($sendBody == '[]' || $sendBody == '{}'){
             $sendBody = '';
@@ -281,7 +294,12 @@ class Router
             $clientSetup = [
                 'headers' => [
                     'Content-Type' => 'application/json',
+                    'CB-VERSION' => $this->apiVersion,
                 ] ];
+
+            if($accessToken){
+                $clientSetup['headers']['access_token'] = $accessToken;
+            }
 
             $clientSetup['query'] = json_decode($sendBody, true);
 

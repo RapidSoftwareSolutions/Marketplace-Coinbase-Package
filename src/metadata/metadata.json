@@ -13,8 +13,2153 @@
     "accounts": {
         "domain": "coinbase.com",
         "credentials": [
-            "clientId", "clientSecret"
+            "clientId",
+            "clientSecret"
         ]
     },
-    "blocks": []
+    "blocks": [
+        {
+            "name": "getAccessToken",
+            "description": "Geta access token.",
+            "args": [
+                {
+                    "name": "clientId",
+                    "type": "credentials",
+                    "info": "Client identifier.",
+                    "required": true
+                },
+                {
+                    "name": "clientSecret",
+                    "type": "credentials",
+                    "info": "Client secret.",
+                    "required": true
+                },
+                {
+                    "name": "redirectUri",
+                    "type": "String",
+                    "info": "URL in your app where users will be sent after authorization.",
+                    "required": true
+                },
+                {
+                    "name": "code",
+                    "type": "String",
+                    "info": "A one-time use code that may be exchanged for a bearer token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "refreshAccessToken",
+            "description": "Refresh access token.",
+            "args": [
+                {
+                    "name": "clientId",
+                    "type": "credentials",
+                    "info": "Client identifier.",
+                    "required": true
+                },
+                {
+                    "name": "clientSecret",
+                    "type": "credentials",
+                    "info": "Client secret.",
+                    "required": true
+                },
+                {
+                    "name": "refreshToken",
+                    "type": "Srting",
+                    "info": "The refresh token retrieved during the initial request for an access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "revokeAccessToken",
+            "description": "RevokeAccessToken.",
+            "args": [
+                {
+                    "name": "token",
+                    "type": "String",
+                    "info": "Active access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getNotifications",
+            "description": "Lists notifications where the current user was the subscriber. Scopes: wallet:notifications:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleNotification",
+            "description": "Show a notification for which the current user was a subsciber. Scopes: wallet:notifications:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "notificationsId",
+                    "type": "String",
+                    "info": "Single notification identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getUser",
+            "description": "Get any user\u2019s public information with their ID.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "userId",
+                    "type": "String",
+                    "info": "User identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getMe",
+            "description": "Get current user\u2019s public information. Scope: wallet:user:read,wallet:user:email",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getMyAuthInfo",
+            "description": "Get current user\u2019s authorization information including granted scopes.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "updateMe",
+            "description": "Modify current user and their preferences. Scope: wallet:user:update",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "User\u2019s public name.",
+                    "required": false
+                },
+                {
+                    "name": "timeZone",
+                    "type": "String",
+                    "info": "Time zone.",
+                    "required": false
+                },
+                {
+                    "name": "nativeCurrency",
+                    "type": "String",
+                    "info": "Local currency used to display amounts converted from BTC.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAccounts",
+            "description": "Lists current user\u2019s accounts to which the authentication method has access to. Scope: wallet:accounts:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleAccount",
+            "description": "Show current user\u2019s account. Scopes: wallet:accounts:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Current user account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createAccount",
+            "description": "Creates a new account for user. Scopes: wallet:accounts:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Account name.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "setAccountAsPrimary",
+            "description": "Promote an account as primary account. Scopes: wallet:accounts:update",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "updateAccount",
+            "description": "UpdateAccount. Scopes: wallet:accounts:update",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Account name",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteAccount",
+            "description": "Removes user\u2019s account. Scopes: wallet:accounts:delete",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAddresses",
+            "description": "Lists addresses for an account. Scopes: wallet:addresses:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleAddress",
+            "description": "GetSingleAddress. Scopes: wallet:addresses:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "addressId",
+                    "type": "String",
+                    "info": "Address identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAddressTransactions",
+            "description": "List transactions that have been sent to a specific address. Scopes: wallet:transactions:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "addressId",
+                    "type": "String",
+                    "info": "Address identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createAddress",
+            "description": "Creates a new address for an account. Scopes: wallet:addresses:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Address label.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getTransactions",
+            "description": "Lists account\u2019s transactions. Scopes: wallet:transactions:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleTransaction",
+            "description": "Show an individual transaction for an account. Scopes: wallet:transactions:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "transactionId",
+                    "type": "String",
+                    "info": "Transaction identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "sendMoney",
+            "description": "Send funds to a bitcoin address, ethereum address, or email address. Scopes: wallet:transactions:send",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "to",
+                    "type": "String",
+                    "info": "A bitcoin address, ethereum address, or an email of the recipient.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Amount to be sent.",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Currency for the amount.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "Notes to be included in the email that the recipient receives.",
+                    "required": false
+                },
+                {
+                    "name": "skipNotifications",
+                    "type": "Boolean",
+                    "info": "Don\u2019t send notification emails for small amounts.",
+                    "required": false
+                },
+                {
+                    "name": "fee",
+                    "type": "String",
+                    "info": "Transaction fee in BTC if you would like to pay it.",
+                    "required": false
+                },
+                {
+                    "name": "idem",
+                    "type": "String",
+                    "info": "A token to ensure idempotence.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "transferAccountsMoney",
+            "description": "Transfer bitcoin or ethereum between two of a user\u2019s accounts. Scopes: wallet:transactions:transfer",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "to",
+                    "type": "String",
+                    "info": "ID of the receiving account.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Amount to be transferred.",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Currency for the amount.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "Notes to be included in the transfer.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "requestMoney",
+            "description": "Requests money from an email address. Scopes: wallet:transactions:request",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "to",
+                    "type": "String",
+                    "info": "An email of the recipient.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Amount to be requested.",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Currency for the amount.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "Notes to be included in the email that the recipient receives.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "completeRequestMoney",
+            "description": "Lets the recipient of a money request complete the request by sending money to the user who requested the money. Scopes: wallet:transactions:request",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "transactionId",
+                    "type": "String",
+                    "info": "Transaction identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "resendMoneyRequest",
+            "description": "Lets the user resend a money request. Scopes: wallet:transactions:request",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "transactionId",
+                    "type": "String",
+                    "info": "Transaction identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "cancelRequestMoney",
+            "description": "Lets a user cancel a money request. Scopes: wallet:transactions:request",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "transactionId",
+                    "type": "String",
+                    "info": "Transaction identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getBuys",
+            "description": "Lists buys for an account. Scopes: wallet:buys:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleBuy",
+            "description": "Show an individual buy. Scopes: wallet:buys:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "buyId",
+                    "type": "String",
+                    "info": "Individual buy identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "placeBuyOrder",
+            "description": "Buys a user-defined amount of bitcoin or ethereum. Scopes: wallet:buys:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Buy amount without fees.",
+                    "required": true
+                },
+                {
+                    "name": "total",
+                    "type": "String",
+                    "info": "Buy amount with fees (alternative to amount).",
+                    "required": false
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Currency for the amount.",
+                    "required": true
+                },
+                {
+                    "name": "paymentMethod",
+                    "type": "String",
+                    "info": "The ID of the payment method that should be used for the buy.",
+                    "required": false
+                },
+                {
+                    "name": "agreeBtcAmountVaries",
+                    "type": "Boolean",
+                    "info": "Whether or not you would still like to buy if you have to wait for your money to arrive to lock in a price.",
+                    "required": false
+                },
+                {
+                    "name": "commit",
+                    "type": "Boolean",
+                    "info": "If set to false, this buy will not be immediately completed.",
+                    "required": false
+                },
+                {
+                    "name": "quote",
+                    "type": "Boolean",
+                    "info": "If set to true, response will return an unsave buy for detailed price quote.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "commitBuy",
+            "description": "Completes a buy that is created in commit: false state. Scopes: wallet:buys:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "buyId",
+                    "type": "String",
+                    "info": "Individual buy identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSells",
+            "description": "Lists sells for an account. Scopes: wallet:sells:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleSell",
+            "description": "Show an individual sell. Scopes: wallet:sells:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "sellId",
+                    "type": "String",
+                    "info": "Individual sell identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "placeSellOrder",
+            "description": "Sells a user-defined amount of bitcoin or ethereum. Scopes: wallet:sells:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Sell amount.",
+                    "required": true
+                },
+                {
+                    "name": "total",
+                    "type": "String",
+                    "info": "Sell amount with fees.",
+                    "required": false
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Currency for the amount.",
+                    "required": true
+                },
+                {
+                    "name": "paymentMethod",
+                    "type": "String",
+                    "info": "The ID of the payment method that should be used for the sell.",
+                    "required": false
+                },
+                {
+                    "name": "agreeBtcAmountVaries",
+                    "type": "Boolean",
+                    "info": "Whether or not you would still like to sell if you have to wait for your money to arrive to lock in a price.",
+                    "required": false
+                },
+                {
+                    "name": "quote",
+                    "type": "Boolean",
+                    "info": "f set to true, response will return an unsave sell for detailed price quote.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "commitSell",
+            "description": "Completes a sell that is created in commit: false state. Scopes: wallet:sells:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "sellId",
+                    "type": "String",
+                    "info": "Individual sell identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getDeposits",
+            "description": "Lists deposits for an account. Scopes: wallet:deposits:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleDeposit",
+            "description": "Show an individual deposit. Scopes: wallet:deposits:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Deposit identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "depositFunds",
+            "description": "Deposits user-defined amount of funds to a fiat account. Scopes: wallet:deposits:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Deposit amount.",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Currency for the amount.",
+                    "required": true
+                },
+                {
+                    "name": "paymentMethod",
+                    "type": "String",
+                    "info": "The ID of the payment method that should be used for the deposit.",
+                    "required": true
+                },
+                {
+                    "name": "commit",
+                    "type": "Boolean",
+                    "info": "If set to false, this deposit will not be immediately completed.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "commitDeposit",
+            "description": "Completes a deposit that is created in commit: false state. Scopes: wallet:deposits:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "depositId",
+                    "type": "String",
+                    "info": "Deposit identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getWithdrawals",
+            "description": "Lists withdrawals for an account. Scopes: wallet:withdrawals:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleWithdrawal",
+            "description": "Show an individual withdrawal. Scopes: wallet:withdrawals:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "withdrawalId",
+                    "type": "String",
+                    "info": "Withdrawal identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "withdrawFunds",
+            "description": "Withdraws user-defined amount of funds from a fiat account. Scopes: wallet:withdrawals:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Withdrawal amount.",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Currency for the amount.",
+                    "required": true
+                },
+                {
+                    "name": "paymentMethod",
+                    "type": "String",
+                    "info": "The ID of the payment method that should be used for the withdrawal.",
+                    "required": true
+                },
+                {
+                    "name": "commit",
+                    "type": "Boolean",
+                    "info": "If set to false, this withdrawal will not be immediately completed.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "commitWithdrawal",
+            "description": "Completes a withdrawal that is created in commit: false state. Scopes: wallet:withdrawals:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "withdrawalId",
+                    "type": "String",
+                    "info": "Withdrawal identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPaymentMethods",
+            "description": "Lists current user\u2019s payment methods. Scopes: wallet:payment-methods:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSinglePaymentMethod",
+            "description": "Show current user\u2019s payment method. Scopes: wallet:payment-methods:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "paymentMethodId",
+                    "type": "String",
+                    "info": "Payment method identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleMerchant",
+            "description": "Get any merchant\u2019s information with their ID.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "merchantId",
+                    "type": "String",
+                    "info": "Merchant identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getOrders",
+            "description": "Lists the current user\u2019s (merchant) orders. Scopes: wallet:orders:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleOrder",
+            "description": "Show current merchant order. Scopes: wallet:orders:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "orderId",
+                    "type": "String",
+                    "info": "Order identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createOrder",
+            "description": "Creates a new merchant order. Scopes: wallet:orders:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Order amount (price).",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Order amount\u2019s currency.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Name of the order.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "More detailed description of the order.",
+                    "required": false
+                },
+                {
+                    "name": "notificationsUrl",
+                    "type": "String",
+                    "info": "Order specific notification URL.",
+                    "required": false
+                },
+                {
+                    "name": "metadata",
+                    "type": "JSON",
+                    "info": "JSON Object. Developer defined key value pairs.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "refundOrder",
+            "description": "Refunds an order. Scopes: wallet:orders:refund",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "orderId",
+                    "type": "String",
+                    "info": "Order identifier.",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "The currency to issue the refund in.",
+                    "required": true
+                },
+                {
+                    "name": "refundAddress",
+                    "type": "String",
+                    "info": "Must be a valid bitcoin address.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCheckouts",
+            "description": "Lists current user\u2019s checkouts. Scopes: wallet:checkouts:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleCheckout",
+            "description": "Show current user\u2019s checkout. Scopes: wallet:checkouts:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "checkoutId",
+                    "type": "String",
+                    "info": "Checkout identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createCheckout",
+            "description": "Creates a new merchant order checkout product. Scopes: wallet:checkouts:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "amount",
+                    "type": "String",
+                    "info": "Order amount (price).",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Order amount\u2019s currency.",
+                    "required": true
+                },
+                {
+                    "name": "name",
+                    "type": "String",
+                    "info": "Name of the order.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "More detailed description of the checkout order.",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "String",
+                    "info": "Checkout\u2019s order type.",
+                    "required": false
+                },
+                {
+                    "name": "style",
+                    "type": "String",
+                    "info": "Style of a payment button. One of: buy_now_large, buy_now_small, donation_large, donation_small ,custom_large, custom_small.",
+                    "required": false
+                },
+                {
+                    "name": "customerDefinedAmount",
+                    "type": "Boolean",
+                    "info": "Allow customer to define the amount they are paying.",
+                    "required": false
+                },
+                {
+                    "name": "amountPresets",
+                    "type": "Array",
+                    "info": "Array of Strings, allow customer to select one of the predefined amount values.",
+                    "required": false
+                },
+                {
+                    "name": "successUrl",
+                    "type": "String",
+                    "info": "URL to which the customer is redirected after successful payment.",
+                    "required": false
+                },
+                {
+                    "name": "cancelUrl",
+                    "type": "String",
+                    "info": "URL to which the customer is redirected after they have canceled a payment.",
+                    "required": false
+                },
+                {
+                    "name": "notificationsUrl",
+                    "type": "String",
+                    "info": "Checkout specific notification URL.",
+                    "required": false
+                },
+                {
+                    "name": "autoRedirect",
+                    "type": "Boolean",
+                    "info": "Auto-redirect users to success or cancel url after payment.",
+                    "required": false
+                },
+                {
+                    "name": "collectShippingAddress",
+                    "type": "Boolean",
+                    "info": "Collect shipping address from customer.",
+                    "required": false
+                },
+                {
+                    "name": "collectEmail",
+                    "type": "Boolean",
+                    "info": "Collect email address from customer.",
+                    "required": false
+                },
+                {
+                    "name": "collectPhoneNumber",
+                    "type": "Boolean",
+                    "info": "Collect phone number from customer.",
+                    "required": false
+                },
+                {
+                    "name": "collectCountry",
+                    "type": "Boolean",
+                    "info": "Collect country from customer.",
+                    "required": false
+                },
+                {
+                    "name": "metadata",
+                    "type": "JSON",
+                    "info": "JSON Object. Developer defined key value pairs.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCheckoutOrders",
+            "description": "Lists checkout product\u2019s orders. Scopes: wallet:checkouts:read",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "checkoutId",
+                    "type": "String",
+                    "info": "Checkout identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createCheckoutOrder",
+            "description": "Creates a new order for a checkout. Scopes: wallet:checkouts:create",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "checkoutId",
+                    "type": "String",
+                    "info": "Checkout identifier.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCurrencies",
+            "description": "List known currencies.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getExchangeRates",
+            "description": "Get current exchange rates.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "currency",
+                    "type": "String",
+                    "info": "Base currency (default: USD).",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getBuyPrice",
+            "description": "Get the total price to buy one bitcoin or ether.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "currencyPair",
+                    "type": "String",
+                    "info": "Currency pair. Example BTC-USD.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSellPrice",
+            "description": "Get the total price to sell one bitcoin or ether.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "currencyPair",
+                    "type": "String",
+                    "info": "Currency pair. Example BTC-USD.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSpotPrice",
+            "description": "Get the current market price for bitcoin.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "currencyPair",
+                    "type": "String",
+                    "info": "Currency pair. Example BTC-USD.",
+                    "required": true
+                },
+                {
+                    "name": "date",
+                    "type": "String",
+                    "info": "Specify date for historic spot price in format YYYY-MM-DD (UTC).",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCurrentTime",
+            "description": "Get the API server time.",
+            "args": [],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "nextPage",
+            "description": "Retrieve next page for paginated blocks.",
+            "args": [
+                {
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "Access token.",
+                    "required": true
+                },
+                {
+                    "name": "nextUri",
+                    "type": "String",
+                    "info": "Next page Uri, from pagination object in response.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        }
+    ]
 }

@@ -9,5 +9,11 @@ if ( ! defined( 'RAPID_IN' ) ) exit( 'No direct script access allowed' );
  */
 class CustomModel
 {
-    public static function defalut($param, &$blockCustom, $vendorUrl){}
+    public static function nextPage($param, $blockCustom, &$vendorUrl){
+        if(strlen($param['nextUri'])>0){
+             $vendorUrl = $blockCustom['vendorUrl'] . $param['nextUri'];
+        }
+
+        return '{}';
+    }
 }
