@@ -2,4 +2,4 @@
 
 # Coinbase Package
 Makes it easy to integrate bitcoin and ethereum into both new and existing applications.
-* Domain: apple.com/itunes
+* Domain: coinbase.com
