@@ -139,6 +139,7 @@ class Router
             // Remove $accessToken from params
             if(isset($sendBody['access_token'])&&strlen($sendBody['access_token'])>0){
                 $accessToken = $sendBody['access_token'];
+                unset($sendBody['access_token']);
             }else{
                 $accessToken = false;
             }
@@ -298,7 +299,7 @@ class Router
                 ] ];
 
             if($accessToken){
-                $clientSetup['headers']['access_token'] = $accessToken;
+                $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
             }
 
             if($method == 'API-KEY-GET'){
