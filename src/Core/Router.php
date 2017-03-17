@@ -28,7 +28,7 @@ class Router
         $this->klein = new \Klein\Klein();
         $this->http = new \GuzzleHttp\Client(['verify' => false]);
         $this->apiVersion = '2017-03-06';
-        $this->supportedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
+        $this->supportedMethods = ['GET', 'POST', 'PUT', 'DELETE', 'API-KEY-GET'];
     }
 
     public function setup()
@@ -145,7 +145,7 @@ class Router
 
             // If need, custom make custom processing for route
             if(isset($blockCustom['custom'])&&$blockCustom['custom'] == true){
-                $sendBody = CustomModel::$blockName($sendParam, $this->custom[$blockName], $vendorUrl);
+                $sendBody = CustomModel::$blockName($sendParam, $this->custom[$blockName], $vendorUrl, $this->apiVersion);
             }else{
                 unset($sendBody['appClientId']);
                 if(isset($this->custom[$blockName]['showApiType'])&&$this->custom[$blockName]['showApiType']==true){
@@ -301,7 +301,12 @@ class Router
                 $clientSetup['headers']['access_token'] = $accessToken;
             }
 
-            $clientSetup['query'] = json_decode($sendBody, true);
+            if($method == 'API-KEY-GET'){
+                $clientSetup = $sendBody;
+                $method = 'GET';
+            }else{
+                $clientSetup['query'] = json_decode($sendBody, true);
+            }
 
             $vendorResponse = $this->http->request($method, $url, $clientSetup);
             $responseBody = $vendorResponse->getBody()->getContents();

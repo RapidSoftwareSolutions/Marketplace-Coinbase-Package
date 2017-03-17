@@ -3,7 +3,7 @@
 # Coinbase Package
 Connect to the Coinbase Digital Currency API to make bitcoin/ethereum transactions and get real-time data. Test an API call and export the code into your app.
 * Domain: coinbase.com
-* Credentials: clientId, clientSecret
+* Credentials: clientId, clientSecret, apiKey, secretKey
 
 ## How to get credentials: 
 0. Sign up in [Coinbase](https://www.coinbase.com/signup), and verify your email. 
@@ -41,17 +41,19 @@ RevokeAccessToken.
 ## Coinbase.getNotifications
 Lists notifications where the current user was the subscriber. Scopes: wallet:notifications:read
 
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token.
+| Field    | Type       | Description
+|----------|------------|----------
+| apiKey   | credentials| Your API Key.
+| secretKey| credentials| Your API Secret.
 
 ## Coinbase.getSingleNotification
 Show a notification for which the current user was a subsciber. Scopes: wallet:notifications:read
 
-| Field          | Type  | Description
-|----------------|-------|----------
-| accessToken    | String| Access token.
-| notificationsId| String| Single notification identifier.
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Your API Key.
+| secretKey      | credentials| Your API Secret.
+| notificationsId| String     | Single notification identifier.
 
 ## Coinbase.getUser
 Get any user’s public information with their ID.

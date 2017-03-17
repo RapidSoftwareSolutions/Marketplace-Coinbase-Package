@@ -14,6 +14,8 @@ return array (
             'credentials' => array (
                     'clientId',
                     'clientSecret',
+                    'apiKey',
+                    'secretKey',
                 ),
         ),
     'blocks' => array (
@@ -88,9 +90,15 @@ return array (
             'description' => 'Lists notifications where the current user was the subscriber. Scopes: wallet:notifications:read',
             'args' => array (
                 array (
-                    'name' => 'accessToken',
+                    'name' => 'apiKey',
                     'type' => 'String',
-                    'info' => 'Access token.',
+                    'info' => 'Your API Key.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'secretKey',
+                    'type' => 'String',
+                    'info' => 'Your API Secret.',
                     'required' => true,
                 ),
             ),
@@ -100,9 +108,15 @@ return array (
             'description' => 'Show a notification for which the current user was a subsciber. Scopes: wallet:notifications:read',
             'args' => array (
                 array (
-                    'name' => 'accessToken',
+                    'name' => 'apiKey',
                     'type' => 'String',
-                    'info' => 'Access token.',
+                    'info' => 'Your API Key.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'secretKey',
+                    'type' => 'String',
+                    'info' => 'Your API Secret.',
                     'required' => true,
                 ),
                 array (
@@ -1579,18 +1593,22 @@ return array (
         ),
         'getNotifications' => array (
             'dictionary' => array (
-                'accessToken' => 'access_token',
+                'apiKey' => 'apiKey',
+                'secretKey' => 'secretKey',
             ),
             'vendorUrl' => 'https://api.coinbase.com/v2/notifications',
-            'method' => 'GET',
+            'method' => 'API-KEY-GET',
+            'custom' => true,
         ),
         'getSingleNotification' => array (
             'dictionary' => array (
-                'accessToken' => 'access_token',
+                'apiKey' => 'apiKey',
+                'secretKey' => 'secretKey',
                 'notificationsId' => 'notificationsId',
             ),
             'vendorUrl' => 'https://api.coinbase.com/v2/notifications/{{notificationsId}}',
-            'method' => 'GET',
+            'method' => 'API-KEY-GET',
+            'custom' => true,
         ),
         'getUser' => array (
             'dictionary' => array (
