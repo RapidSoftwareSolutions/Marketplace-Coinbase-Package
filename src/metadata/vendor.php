@@ -65,7 +65,7 @@ return array (
                 ),
                 array (
                     'name' => 'refreshToken',
-                    'type' => 'Srting',
+                    'type' => 'String',
                     'info' => 'The refresh token retrieved during the initial request for an access token.',
                     'required' => true,
                 ),
