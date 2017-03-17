@@ -700,16 +700,16 @@ return array (
                     'required' => true,
                 ),
                 array (
-                    'name' => 'total',
-                    'type' => 'String',
-                    'info' => 'Buy amount with fees (alternative to amount).',
-                    'required' => false,
-                ),
-                array (
                     'name' => 'currency',
                     'type' => 'String',
                     'info' => 'Currency for the amount.',
                     'required' => true,
+                ),
+                array (
+                    'name' => 'total',
+                    'type' => 'String',
+                    'info' => 'Buy amount with fees (alternative to amount).',
+                    'required' => false,
                 ),
                 array (
                     'name' => 'paymentMethod',
@@ -826,16 +826,16 @@ return array (
                     'required' => true,
                 ),
                 array (
-                    'name' => 'total',
-                    'type' => 'String',
-                    'info' => 'Sell amount with fees.',
-                    'required' => false,
-                ),
-                array (
                     'name' => 'currency',
                     'type' => 'String',
                     'info' => 'Currency for the amount.',
                     'required' => true,
+                ),
+                array (
+                    'name' => 'total',
+                    'type' => 'String',
+                    'info' => 'Sell amount with fees.',
+                    'required' => false,
                 ),
                 array (
                     'name' => 'paymentMethod',
@@ -911,6 +911,12 @@ return array (
                 ),
                 array (
                     'name' => 'accountId',
+                    'type' => 'String',
+                    'info' => 'Account identifier.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'depositId',
                     'type' => 'String',
                     'info' => 'Deposit identifier.',
                     'required' => true,
@@ -1879,8 +1885,9 @@ return array (
             'dictionary' => array (
                 'accessToken' => 'access_token',
                 'accountId' => 'accountId',
+                'depositId' => 'depositId',
             ),
-            'vendorUrl' => 'https://api.coinbase.com/v2/accounts/:account_id/deposits/{{depositId}}',
+            'vendorUrl' => 'https://api.coinbase.com/v2/accounts/{{accountId}}/deposits/{{depositId}}',
             'method' => 'GET',
         ),
         'depositFunds' => array (

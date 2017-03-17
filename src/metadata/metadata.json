@@ -991,16 +991,16 @@
                     "required": true
                 },
                 {
-                    "name": "total",
-                    "type": "String",
-                    "info": "Buy amount with fees (alternative to amount).",
-                    "required": false
-                },
-                {
                     "name": "currency",
                     "type": "String",
                     "info": "Currency for the amount.",
                     "required": true
+                },
+                {
+                    "name": "total",
+                    "type": "String",
+                    "info": "Buy amount with fees (alternative to amount).",
+                    "required": false
                 },
                 {
                     "name": "paymentMethod",
@@ -1157,16 +1157,16 @@
                     "required": true
                 },
                 {
-                    "name": "total",
-                    "type": "String",
-                    "info": "Sell amount with fees.",
-                    "required": false
-                },
-                {
                     "name": "currency",
                     "type": "String",
                     "info": "Currency for the amount.",
                     "required": true
+                },
+                {
+                    "name": "total",
+                    "type": "String",
+                    "info": "Sell amount with fees.",
+                    "required": false
                 },
                 {
                     "name": "paymentMethod",
@@ -1272,6 +1272,12 @@
                 },
                 {
                     "name": "accountId",
+                    "type": "String",
+                    "info": "Account identifier.",
+                    "required": true
+                },
+                {
+                    "name": "depositId",
                     "type": "String",
                     "info": "Deposit identifier.",
                     "required": true
