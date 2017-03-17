@@ -207,7 +207,7 @@ class Router
             $param = [];
             // Check input param in param list
             foreach($paramList as $oneParam){
-                $param[$oneParam] = (isset($jsonParam[$oneParam]))?$jsonParam[$oneParam]:false;
+                $param[$oneParam] = (isset($jsonParam[$oneParam]))?$jsonParam[$oneParam]:null;
             }
 
             return $param;
@@ -264,6 +264,9 @@ class Router
     {
         $result = [];
         foreach($inputParam as $paramName => $paramVal){
+            if($paramVal == null){
+                continue;
+            }
             // Convert numeric in Numeric type
             if(is_numeric($paramVal)){
                 $paramVal = intval($paramVal);
@@ -274,10 +277,6 @@ class Router
                 $finalParamName = $dictionary[$paramName];
             }
             $result[$finalParamName] = $paramVal;
-            // URL encode term field
-            if($paramName == 'term'){
-                $result[$finalParamName] = urlencode($paramVal);
-            }
         }
 
         return $result;

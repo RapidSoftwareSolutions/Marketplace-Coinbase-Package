@@ -14,7 +14,9 @@
         "domain": "coinbase.com",
         "credentials": [
             "clientId",
-            "clientSecret"
+            "clientSecret",
+            "apiKey",
+            "secretKey"
         ]
     },
     "blocks": [
@@ -119,9 +121,15 @@
             "description": "Lists notifications where the current user was the subscriber. Scopes: wallet:notifications:read",
             "args": [
                 {
-                    "name": "accessToken",
+                    "name": "apiKey",
                     "type": "String",
-                    "info": "Access token.",
+                    "info": "Your API Key.",
+                    "required": true
+                },
+                {
+                    "name": "secretKey",
+                    "type": "String",
+                    "info": "Your API Secret.",
                     "required": true
                 }
             ],
@@ -141,9 +149,15 @@
             "description": "Show a notification for which the current user was a subsciber. Scopes: wallet:notifications:read",
             "args": [
                 {
-                    "name": "accessToken",
+                    "name": "apiKey",
                     "type": "String",
-                    "info": "Access token.",
+                    "info": "Your API Key.",
+                    "required": true
+                },
+                {
+                    "name": "secretKey",
+                    "type": "String",
+                    "info": "Your API Secret.",
                     "required": true
                 },
                 {
@@ -1833,15 +1847,15 @@
                     "required": true
                 },
                 {
-                    "name": "description",
-                    "type": "String",
-                    "info": "More detailed description of the checkout order.",
-                    "required": false
-                },
-                {
                     "name": "type",
                     "type": "String",
                     "info": "Checkout\u2019s order type.",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "type": "String",
+                    "info": "More detailed description of the checkout order.",
                     "required": false
                 },
                 {

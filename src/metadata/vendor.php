@@ -1326,15 +1326,15 @@ return array (
                     'required' => true,
                 ),
                 array (
-                    'name' => 'description',
-                    'type' => 'String',
-                    'info' => 'More detailed description of the checkout order.',
-                    'required' => false,
-                ),
-                array (
                     'name' => 'type',
                     'type' => 'String',
                     'info' => 'Checkout’s order type.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'description',
+                    'type' => 'String',
+                    'info' => 'More detailed description of the checkout order.',
                     'required' => false,
                 ),
                 array (
