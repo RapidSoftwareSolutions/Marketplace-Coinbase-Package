@@ -2122,6 +2122,7 @@ return array (
             ),
             'vendorUrl' => 'https://api.coinbase.com/v2/prices/{{currencyPair}}/spot',
             'method' => 'GET',
+            'custom' => true
         ),
         'getCurrentTime' => array (
             'vendorUrl' => 'https://api.coinbase.com/v2/time',

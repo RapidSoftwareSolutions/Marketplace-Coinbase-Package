@@ -496,9 +496,9 @@ Creates a new merchant order checkout product. Scopes: wallet:checkouts:create
 | name                  | String | Name of the order.
 | description           | String | More detailed description of the checkout order.
 | type                  | String | Checkout’s order type.
-| style                 | String | Style of a payment button. One of: buy_now_large, buy_now_small, donation_large, donation_small ,custom_large, custom_small.
+| style                 | Select | Style of a payment button. One of: buy_now_large, buy_now_small, donation_large, donation_small ,custom_large, custom_small.
 | customerDefinedAmount | Boolean| Allow customer to define the amount they are paying.
-| amountPresets         | Array  | Array of Strings, allow customer to select one of the predefined amount values.
+| amountPresets         | List  | Array of Strings, allow customer to select one of the predefined amount values.
 | successUrl            | String | URL to which the customer is redirected after successful payment.
 | cancelUrl             | String | URL to which the customer is redirected after they have canceled a payment.
 | notificationsUrl      | String | Checkout specific notification URL.
@@ -563,7 +563,7 @@ Get the current market price for bitcoin.
 |-------------|-------|----------
 | accessToken | String| Access token.
 | currencyPair| String| Currency pair. Example BTC-USD.
-| date        | String| Specify date for historic spot price in format YYYY-MM-DD (UTC).
+| date        | DatePicker| Specify date for historic spot price in format YYYY-MM-DD (UTC).
 
 ## Coinbase.getCurrentTime
 Get the API server time.
